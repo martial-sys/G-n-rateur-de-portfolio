@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Portfolio Prestige</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style-generateur.css">
+</head>
+<body>
+    <div class="main-container">
+        <div id="control-panel">
+            <div class="panel-header">
+                <img src="https://i.postimg.cc/wB1RX8ny/file-00000000848c61f8a4258e05177b8d23.png" alt="Logo du Générateur" class="generator-logo">
+                <div>
+                    <h2>Générateur Prestige</h2>
+                    <p>Créez un portfolio qui vous ressemble, en quelques minutes.</p>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <div class="accordion">
+
+                    <div class="accordion-item is-open">
+                        <button class="accordion-header" data-target-section="hero">1. Identité & Héro</button>
+                        <div class="accordion-body">
+                           <div class="form-group">
+                                <label for="nomComplet">Nom Complet <span class="required">*</span></label>
+                                <input type="text" id="nomComplet" placeholder="Ex: Amina Koné">
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="titre">Titre / Poste <span class="required">*</span></label>
+                                <input type="text" id="titre" placeholder="Ex: Stratège en Contenu Digital">
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="accroche">Phrase d'accroche</label>
+                                <textarea id="accroche" rows="3" placeholder="Ex: Je construis des ponts..."></textarea>
+                            </div>
+                             <div class="form-group">
+                                <label for="logo">URL de votre Logo <span class="required">*</span></label>
+                                <input type="url" id="logo" placeholder="https://i.postimg.cc/...">
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="photoProfil">URL de votre Photo de Profil <span class="required">*</span></label>
+                                <input type="url" id="photoProfil" placeholder="https://i.postimg.cc/...">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-target-section="about">2. Section "À Propos"</button>
+                        <div class="accordion-body">
+                           <div class="form-group">
+                                <label for="aboutTitre">Titre de la section</label>
+                                <input type="text" id="aboutTitre" placeholder="Ex: Votre histoire mérite...">
+                            </div>
+                            <div class="form-group">
+                                <label for="aboutP">Paragraphe de description <span class="required">*</span></label>
+                                <textarea id="aboutP" rows="5" placeholder="Ex: Passionnée par les trésors..."></textarea>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-target-section="skills">3. Compétences <span class="required">*</span></button>
+                        <div class="accordion-body">
+                            <div id="skills-repeater" class="repeater-container"></div>
+                            <button id="add-skill" class="btn-add-block"><i class="fas fa-plus"></i> Ajouter une catégorie</button>
+                            <span class="error-message" id="skills-error"></span>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-target-section="projects">4. Projets <span class="required">*</span></button>
+                        <div class="accordion-body">
+                            <div id="projects-repeater" class="repeater-container"></div>
+                            <button id="add-project" class="btn-add-block"><i class="fas fa-plus"></i> Ajouter un projet</button>
+                            <span class="error-message" id="projects-error"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-target-section="testimonials">5. Témoignages</button>
+                        <div class="accordion-body">
+                            <div id="testimonials-repeater" class="repeater-container"></div>
+                            <button id="add-testimonial" class="btn-add-block"><i class="fas fa-plus"></i> Ajouter un témoignage</button>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-target-section="contact">6. Contact <span class="required">*</span></button>
+                        <div class="accordion-body">
+                            <div class="form-group">
+                                <label for="contactIntro">Intro de la section contact</label>
+                                <textarea id="contactIntro" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp"><i class="fab fa-whatsapp"></i> Numéro WhatsApp</label>
+                                <input type="tel" id="whatsapp" placeholder="Ex: 22891234567">
+                            </div>
+                             <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Adresse Email</label>
+                                <input type="email" id="email" placeholder="Ex: contact@aminakone.com">
+                                <span class="error-message" id="contact-error"></span>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-target-section="contact">7. Réseaux Sociaux</button>
+                        <div class="accordion-body">
+                            <div class="form-group">
+                                <label>Cliquez sur un réseau pour ajouter votre lien :</label>
+                                <div class="social-picker">
+                                    <button class="social-btn" data-social="facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                                    <button class="social-btn" data-social="instagram"><i class="fab fa-instagram"></i> Instagram</button>
+                                    <button class="social-btn" data-social="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</button>
+                                    <button class="social-btn" data-social="tiktok"><i class="fab fa-tiktok"></i> TikTok</button>
+                                </div>
+                            </div>
+                            <div class="social-inputs-container">
+                                <div class="social-input-wrapper" id="wrapper-facebook" style="display: none;"><div class="form-group"><label for="facebook"><i class="fab fa-facebook-f"></i> Lien Facebook</label><input type="url" id="facebook" placeholder="https://facebook.com/..."></div></div>
+                                <div class="social-input-wrapper" id="wrapper-instagram" style="display: none;"><div class="form-group"><label for="instagram"><i class="fab fa-instagram"></i> Lien Instagram</label><input type="url" id="instagram" placeholder="https://instagram.com/..."></div></div>
+                                <div class="social-input-wrapper" id="wrapper-linkedin" style="display: none;"><div class="form-group"><label for="linkedin"><i class="fab fa-linkedin-in"></i> Lien LinkedIn</label><input type="url" id="linkedin" placeholder="https://linkedin.com/in/..."></div></div>
+                                <div class="social-input-wrapper" id="wrapper-tiktok" style="display: none;"><div class="form-group"><label for="tiktok"><i class="fab fa-tiktok"></i> Lien TikTok</label><input type="url" id="tiktok" placeholder="https://tiktok.com/@..."></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">8. Apparence & Thèmes</button>
+                        <div class="accordion-body">
+                           <div class="form-group">
+                               <label>Choisissez une palette de couleurs</label>
+                               <div class="theme-picker">
+                                   <div class="theme-swatch active" data-theme="default"></div>
+                                   <div class="theme-swatch" data-theme="foret"></div>
+                                   <div class="theme-swatch" data-theme="ocean"></div>
+                                   <div class="theme-swatch" data-theme="corail"></div>
+                                   <div class="theme-swatch" data-theme="luxe"></div>
+                                   <div class="theme-swatch" data-theme="energie"></div>
+                                   <div class="theme-swatch" data-theme="rose"></div>
+                                   <div class="theme-swatch" data-theme="violet"></div>
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header">9. Référencement (SEO)</button>
+                        <div class="accordion-body">
+                           <div class="form-group">
+                                <label for="titrePage">Titre de la page</label>
+                                <input type="text" id="titrePage" placeholder="Ex: John Doe - Développeur Web">
+                            </div>
+                            <div class="form-group">
+                                <label for="metaDescription">Description du site (pour Google)</label>
+                                <textarea id="metaDescription" rows="3" placeholder="Ex: Développeur web freelance..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="ogImage">URL de l'image pour le partage social</label>
+                                <input type="url" id="ogImage" placeholder="Lien vers votre photo de profil ou logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    <div class="panel-footer">
+                <button id="preview-btn" class="btn-secondary-action">
+                    <i class="fas fa-eye"></i> Aperçu
+                </button>
+                <button id="download-btn" class="btn-download" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 15l-4-4h3V4h2v7h3l-4 4zM4 17v2h16v-2H4z"/></svg>
+                    Télécharger
+                </button>
+            </div>
+            <span class="error-message" id="global-error">Veuillez remplir tous les champs obligatoires (*)</span>
+        </div>
+
+        
+        <div id="preview-panel">
+            <iframe src="https://papaya-crepe-f49067.netlify.app/" title="Aperçu du Portfolio"></iframe>
+        </div>
+    </div>
+    
+    <div id="notification-container"></div>
+
+    <div id="success-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Fermer">&times;</button>
+            <div class="modal-icon">🎉</div>
+            <h2>Youpi ! Votre portfolio est prêt !</h2>
+            <p>Le fichier <strong>index.html</strong> a été téléchargé. La prochaine étape est de le mettre en ligne pour que le monde entier puisse le voir.</p>
+            <a href="[URL_DE_TA_VIDEO_YOUTUBE]" target="_blank" class="btn-primary-modal">
+                <i class="fab fa-youtube"></i> Voir le Guide d'Hébergement (5 min)
+            </a>
+        </div>
+    </div>
+    
+    <script src="script-generateur.js" defer></script>
+</body>
+</html>
